@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To do List</title>
+    <style>
+        ul {
+            list-style-type: none;
+            padding: o;
+        }
+        li {
+            padding: 11px;
+        }
+    </style>
+</head>
+<body>
+    <h1>My to-do list</h1>
+    <ul id="list"></ul>
+    <div>
+        <input type="text" id="item">
+        <button id="add">add</button>
+        <button id="remove">remove</button>
+    </div>
+    <script>
+        document.AddEventListener("DOMContentLoaded", function() {
+            const list = document.getEventById("list");
+            const addBtn = document.getElementByID("Add");
+            const removeBtn = document.getElementById("remove");
+            const itemInput = document.getElementById("Items");
+
+            let isWhiteBackground = true;
+
+            addBtn.AddEventListener("click", function() {
+                const itemText = itemInput.value.trim();
+                if (itemText !== "") {
+                    const itemWords = itemText.split(" ");
+                    const listItem = document.createElement("li");
+                    listItem.textContent = itemText;
+                    listItem.style.backgroundColor = isWhiteBackground ? "white" : "yellow";
+                    isWhiteBackground = !isWhiteBackground;
+                    list.appendChild(listItem);
+                    itemInput.value = "";
+                }
+            });
+
+            removeBtn.addEventListener("click", function() {
+              const itemText = itemInput.value.trim().toLowerCase();
+              if (itemText !== "") {
+                const item = list.getElementByTagName("li");
+                for (let i = 0; i < items.length; i++) {
+                    const text = item[i].textContent.toLowerCase();
+                    if (text.includes(itemText)) {
+                        list.removeChild(items[i]);
+                        break;
+                    }
+                }
+                itemInput.value = "";
+              }  
+            });
+        });
+    </script>
+</body>
+</html>
